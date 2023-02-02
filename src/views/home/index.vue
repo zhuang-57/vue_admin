@@ -55,11 +55,11 @@
     </div>
     <el-card class="mine-layout">
       <div style="text-align:center">
-        <img width="120px" height="120px" :src="qq" />
+        <img width="150px" height="150px" :src="qq" />
       </div>
       <hr />
-      <div style="text-align:center"><h4>昵称：妆妆子</h4></div>
-      <div style="text-align:center"><h4>身份：管理员</h4></div>
+      <div style="text-align: center;margin-top: 5px"><h4>昵称：妆妆子</h4></div>
+      <div style="text-align: center;margin-top: 10px;"><h4>身份：管理员</h4></div>
     </el-card>
     <div class="un-handle-layout">
       <div class="layout-title">待处理事务</div>
@@ -376,17 +376,16 @@ export default {
   padding:20px;
   font-size:18px;
 }
-.el-col .el-col-8 {
+/* .el-col .el-col-8 {
   padding-left: 30px;
   padding-right: 30px;
-}
+} */
 .total-layout {
-  /* border:1px solid #dcdfe6; */
   margin-top: 20px;
 }
 .total-frame {
   border:1px solid #dcdfe6;
-  position: relative;
+  /* position: relative; */
   height: 100px;
   padding: 20px;
 }
@@ -397,25 +396,25 @@ export default {
   color:#409EFF;
 }
 .total-title{
-  position: absolute;
+  position: relative;
   font-size: 16px;
   color:#909399;
-  left:100px;
-  top:30px;
+  left:70px;
+  top:-50px;
 }
 .total-value {
-  position: absolute;
+  position: relative;
   font-size: 18px;
   color:#606266;
-  left:100px;
-  top:65px;
+  left:70px;
+  top:-40px;
 }
 .mine-layout {
   position: absolute;
   right: 140px;
-  top: 120px;
-  width: 230px;
-  height: 250px;
+  top: 107px;
+  width: 250px;
+  height: 235px;
 
 }
 .un-handle-layout {
@@ -429,13 +428,11 @@ export default {
   border-bottom: 1px solid #EBEEF5;
   padding: 10px;
 }
-.font-medium {
+/* .font-medium {
   font-size: 16px;
   color:#606266;
-}
-.color-danger {
-  color:#f56c6c;
-}
+} */
+
 .overview-layout {
   margin-top:20px;
 }
@@ -449,8 +446,7 @@ export default {
 }
 .statistics-layout {
   padding-top:20px;
+  border: 1px solid #DCDFE6;
 }
-.color-success {
-  color:#67c23a;
-}
+
 </style>

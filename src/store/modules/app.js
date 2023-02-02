@@ -1,33 +1,43 @@
-export default {
+import Cookies from "js-cookie"
+
+ const app = {
     state:{
-        isCollapse:false,//控制菜单是展开还是收起
-        tabsList:[
-            {
-                path:'/',
-                name:'home',
-                label:'首页',
-                icon:'s-home',
-                url:'home'
-            }
-        ]
+        sidebar:{
+            opened: !+Cookies.get('sidebarStatus'),
+            withoutAnimation:false
+        },
+        device:'desktop',//？？？
     },
     mutations:{
-        //修改菜单展开收起的方法
-        collapseMenu(state) {
-            state.isCollapse = !state.isCollapse
-        },
-        //更新面包屑数据
-        selectMenu(state,val){
-            //判断添加数据是否为首页
-            if(val.name !== 'home'){
-                const index = state.tabsList.findIndex(item => item.name === val.name)
-                //如果不存在
-                if(index === -1){
-                    state.tabsList.push(val)
-                }
+        TOGGLE_SIDEBAR: state => {
+            if(state.sidebar.opened) {
+                Cookies.set('sidebarStatus',1)
+            }else {
+                Cookies.set('sidebarStatus',0)
             }
+            state.sidebar.opened = !state.sidebar.opened
+        },
+        CLOSE_SIDEBAR: (state, withoutAnimation) => {
+            Cookies.set('sidebarStatus',1)
+            state.sidebar.opened = false
+            state.sidebar.withoutAnimation = withoutAnimation
+        },
+        TOGGLE_DEVICE: (state, device) => {
+            state.device = device
+        },
+    },
+    actions: {
+        ToggleSideBar:({commit}) => {
+            commit('TOGGLE_SIDEBAR')
+        },
+        CloseSideBar: ({commit}, {withoutAnimation}) => {
+            commit('CLOSE_SIDEBAR',withoutAnimation)
+        },
+        ToggleDevice({commit}, device) {
+            commit('TOGGLE_DEVICE', device)
         }
     }
     
 }
 
+export default app

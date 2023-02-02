@@ -1,5 +1,5 @@
 import request from '@/utils/request'
-
+//登录方法
 export function login(username, password) {
   return request({
     url: '/admin/login',
@@ -10,7 +10,7 @@ export function login(username, password) {
     }
   })
 }
-
+//获取用户信息API
 export function getInfo() {
   return request({
     url: '/admin/info',

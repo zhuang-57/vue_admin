@@ -1,38 +1,50 @@
 <template>
-    <div class="app-wrapper">
-        <el-container>
-            <el-aside width="auto">
-                <side-bar/>
-            </el-aside>
-        <el-container>
-            <el-header>
-                <nav-bar/>
-            </el-header>
-            <el-main>
-                <!-- 路由出口，路由匹配到的组件将渲染到这里 -->
-                <router-view/>
-            </el-main>
-         </el-container>
-</el-container>
+    <div class="app-wrapper" :class="classObj">
+        <sidebar class="sidebar-container"/>
+        <div class="main-container">
+            <navbar />
+            <app-main />
+        </div>
     </div>
 </template>
 
 <script>
-import SideBar from '@/components/SideBar/index.vue'
-import NavBar from '@/components/NavBar/index.vue'
+import { Sidebar, Navbar, AppMain} from './components'
+import ResizeMixin from './mixin/ResizeHandler'
+
 export default{
-    name:'Layout',
-    components:{SideBar,NavBar}
+    name:'layout',
+    components:{
+        Sidebar,
+        Navbar,
+        AppMain
+    },
+    mixins: [ResizeMixin],
+    computed: {
+        sidebar() {
+            return this.$store.state.app.sidebar
+        },
+        device() {
+            return this.$store.state.app.device
+        },
+        classObj() {//用来显示隐藏整个侧边栏
+            return {
+                hideSidebar: !this.sidebar.opened,
+                withoutAnimation: this.sidebar.withoutAnimation,
+                mobile: this.device === 'mobile'//移动
+            }
+        }
+    }
 }
 </script>
 
-<style scoped>
+<style rel="stylesheet/scss" lang="scss" scoped>
+@import "src/styles/mixin.scss";
 .app-wrapper{
+    @include clearfix;
     position: relative;
     height: 100%;
     width: 100%;
 }
-.el-header {
-    padding: 0;
-}
+
 </style>

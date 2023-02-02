@@ -10,14 +10,5 @@ export default {
   name: "App",
 };
 </script>
-<style lang="less">
-html,body {
-  margin: 0;
-  padding:0;
-  box-sizing: border-box;
-}
-.color-main {
-  color: #409eff;
-}
-</style>
+
 
